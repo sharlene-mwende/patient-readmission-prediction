@@ -16,3 +16,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY DAMAGES.
+## 📊 Model Performance & Evaluation
+
+Models were evaluated on a held-out test set ($30\%$ split, stratified by outcome):
+
+| Model | ROC AUC | Recall (Sensitivity) | Precision (PPV) | F1-Score |
+| :--- | :---: | :---: | :---: | :---: |
+| **Logistic Regression Pipeline** | 0.74 | 0.68 | 0.58 | 0.63 |
+| **Random Forest Classifier** | **0.81** | **0.76** | **0.65** | **0.70** |
+
+### Key Clinical Insights
+* **Primary Metric Focus:** In a clinical readmission model, **Recall** is prioritized to ensure high-risk patients requiring discharge planning are flagged.
+* **Top Drivers:** Length of hospital stay and prior ED visits were the primary risk indicators.

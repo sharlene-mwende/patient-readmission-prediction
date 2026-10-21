@@ -19,6 +19,7 @@ for col in df_clean.select_dtypes(include=['object', 'string']).columns:
                                    'num_medications', 'number_outpatient', 'number_emergency',
                                    'number_inpatient']
         df_clean[col] = pd.to_numeric(df_clean[col], errors='coerce')
+
 print("✓ Missing values handled (median for numeric, mode for categorical)")
 print("\nFirst 5 rows:")
 display(df_clean.head(5))
@@ -161,3 +162,25 @@ plt.ylabel('True Label (Actual Patient Outcome)', fontsize=12, labelpad=10)
 
 plt.tight_layout()
 plt.show()
+
+from sklearn.metrics import (
+    classification_report,
+    precision_score,
+    recall_score,
+    f1_score,
+    roc_auc_score
+)
+
+y_pred = 'pipeline'.predict('X_test')
+y_probs = 'pipeline'.predict_proba('X_test')[:, 1]
+
+# 2. Compute metrics
+print("--- Model Performance Metrics ---")
+print(f"Precision: {precision_score(y_test, y_pred):.4f}")
+print(f"Recall:    {recall_score(y_test, y_pred):.4f}")
+print(f"F1 Score:  {f1_score(y_test, y_pred):.4f}")
+print(f"ROC AUC:   {roc_auc_score(y_test, y_probs):.4f}")
+
+# 3. Detailed classification report
+print("\n--- Classification Report ---")
+print(classification_report(y_test, y_pred))
