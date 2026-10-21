@@ -1,0 +1,9 @@
+# Ignore PyCharm editor settings
+.idea/
+
+# Ignore the heavy virtual environment folder
+.venv/
+venv/
+
+# Ignore temporary log files
+*.log
